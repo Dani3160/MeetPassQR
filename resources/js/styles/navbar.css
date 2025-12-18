@@ -1,0 +1,670 @@
+.navbar {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.2);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid oklch(100% 0 0 / 0.1);
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: visible;
+    box-sizing: border-box;
+}
+
+.navbar.mobile-open .mobile-menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.navbar.mobile-open .mobile-menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar.mobile-open .mobile-menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+    z-index: 1001;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.brand-icon {
+    font-size: 1.75rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.brand-text {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    position: relative;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.mobile-overlay {
+    display: none;
+}
+
+/* Desktop: Ensure mobile menu elements are hidden */
+@media (min-width: 769px) {
+    .mobile-overlay {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+
+    /* Ensure navbar-nav uses normal horizontal layout on desktop */
+    .navbar-nav {
+        display: flex !important;
+        position: relative !important;
+        flex-direction: row !important;
+        gap: 0.75rem !important;
+        align-items: center !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        transform: none !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: auto !important;
+        animation: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+    }
+
+    /* Hide mobile menu header and body structure on desktop */
+    .navbar-nav-header,
+    .navbar-nav-body {
+        display: none !important;
+    }
+
+    /* Show nav-links directly in desktop (direct children) */
+    .navbar-nav>.nav-link {
+        display: flex !important;
+        width: auto !important;
+        padding: 0.75rem 1.5rem !important;
+        margin: 0 0.125rem !important;
+    }
+
+    /* Hide nav-links inside navbar-nav-body on desktop */
+    .navbar-nav-body .nav-link {
+        display: none !important;
+    }
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    position: relative;
+}
+
+/* Mobile: override desktop styles completely */
+@media (max-width: 768px) {
+
+    /* Hide direct nav-links on mobile */
+    .navbar-nav>.nav-link {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        position: static !important;
+        display: none !important;
+    }
+
+
+    /* Show nav-links inside navbar-nav-body on mobile */
+    .navbar-nav-body .nav-link {
+        display: flex !important;
+    }
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 0.125rem;
+}
+
+.nav-text {
+    display: inline-block;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: left 0.3s;
+    z-index: -1;
+}
+
+.nav-link:hover::before {
+    left: 0;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.nav-link.router-link-active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link.router-link-active::before {
+    left: 0;
+}
+
+.btn-logout {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    margin-left: 0.5rem;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-logout:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar {
+        max-width: 100vw;
+        width: 100%;
+        overflow: visible;
+        position: relative;
+        /* Ensure navbar doesn't create stacking context that interferes */
+        z-index: auto;
+    }
+
+    .navbar-container {
+        padding: 1rem;
+        max-width: 100vw;
+        width: 100%;
+        overflow: visible;
+        position: relative;
+        /* Ensure container doesn't create positioning context */
+        transform: none !important;
+        perspective: none !important;
+        filter: none !important;
+        will-change: auto;
+        z-index: auto;
+    }
+
+
+    .navbar-brand {
+        font-size: 1.25rem;
+        z-index: 1002;
+        position: relative;
+    }
+
+    .brand-text {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        z-index: 1002;
+        position: relative;
+    }
+
+    .mobile-overlay {
+        /* Base state - hidden */
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: oklch(0% 0 0 / 0.6) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        z-index: 999 !important;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: none;
+        box-sizing: border-box !important;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        display: none;
+    }
+
+    /* When active (teleported to body) */
+    .mobile-overlay.active,
+    body>.mobile-overlay.active {
+        display: block !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+        visibility: visible !important;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Hide navbar-nav completely when not active - remove from flow */
+    .navbar-nav:not(.mobile-open) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: fixed !important;
+        top: auto !important;
+        bottom: -100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        z-index: -1 !important;
+        transform: translateY(100%) !important;
+    }
+
+    /* Show navbar-nav as bottom sheet when active - exactly like modal */
+    /* CRITICAL: Must override ANY parent container positioning */
+    /* Also include teleported version */
+    .navbar-nav.mobile-open,
+    .mobile-nav-teleported.mobile-open,
+    div.navbar-nav.mobile-open,
+    .navbar-container .navbar-nav.mobile-open,
+    .navbar .navbar-nav.mobile-open,
+    nav .navbar-container .navbar-nav.mobile-open,
+    body>.mobile-nav-teleported.mobile-open {
+        /* Display & Visibility */
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+
+        /* CRITICAL: Force fixed positioning relative to VIEWPORT, not parent */
+        position: fixed !important;
+        /* MUST be at bottom, never at top */
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+
+        /* Dimensions */
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        max-height: 80vh !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        /* Visual styling */
+        background: var(--card-bg, white) !important;
+        border: 1px solid var(--border-color, oklch(92% 0 0)) !important;
+        border-top: 1px solid var(--border-color, oklch(92% 0 0)) !important;
+        box-shadow: 0 -8px 24px oklch(0% 0 0 / 0.2) !important;
+        border-radius: 1.5rem 1.5rem 0 0 !important;
+
+        /* Layout */
+        flex-direction: column !important;
+        align-items: stretch !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+
+        /* Z-index & Stacking */
+        z-index: 1000 !important;
+        contain: none !important;
+        isolation: isolate !important;
+
+        /* CRITICAL: Transform MUST be translateY(0) to show at bottom */
+        transform: translateY(0) translateZ(0) !important;
+        /* Force GPU acceleration */
+        will-change: transform, opacity;
+
+        /* Prevent parent interference */
+        clip-path: none !important;
+        filter: none !important;
+        perspective: none !important;
+
+        /* Animation */
+        animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%) translateZ(0) !important;
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0) translateZ(0) !important;
+            opacity: 1;
+        }
+    }
+
+    /* Navbar Header (like modal header) */
+    .navbar-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 1rem 0.875rem;
+        border-bottom: 1px solid var(--border-color, oklch(92% 0 0));
+        transition: border-color 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .navbar-nav-title {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--text-primary, oklch(20% 0 0));
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+
+    @supports not (-webkit-background-clip: text) {
+        .navbar-nav-title {
+            color: var(--primary) !important;
+        }
+    }
+
+    .navbar-nav-close {
+        background: var(--input-bg, oklch(96% 0 0));
+        border: none;
+        border-radius: 0.5rem;
+        width: 2.125rem;
+        height: 2.125rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--text-secondary, oklch(50% 0 0));
+        flex-shrink: 0;
+    }
+
+    .navbar-nav-close:hover {
+        background: var(--input-bg-focus, oklch(92% 0 0));
+        transform: rotate(90deg);
+        color: var(--primary);
+    }
+
+    .navbar-nav-close i {
+        font-size: 1.25rem;
+    }
+
+    /* Navbar Body (like modal body) */
+    .navbar-nav-body {
+        padding: 1.125rem 1rem calc(1rem + env(safe-area-inset-bottom));
+        max-height: calc(80vh - 140px) !important;
+        min-height: auto !important;
+        overflow-y: auto;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        justify-content: flex-start;
+        border-radius: var(--radius-sm);
+        margin: 0;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        color: var(--text-primary, oklch(20% 0 0));
+        background: transparent;
+        border: none;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        transition: all 0.2s;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link:hover:not(.btn-logout) {
+        background: var(--table-row-hover, oklch(98% 0 0));
+        color: var(--primary);
+    }
+
+    .nav-link.router-link-active {
+        background: var(--primary);
+        color: white;
+    }
+
+    .nav-link .nav-text {
+        font-size: 1rem;
+    }
+
+    .btn-logout {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+    }
+
+    .btn-logout:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding: 0.75rem 1rem;
+        max-width: 100vw;
+    }
+
+    .navbar-brand {
+        font-size: 1.125rem;
+    }
+
+    .navbar-nav {
+        display: none !important;
+    }
+
+    .navbar-nav.mobile-open {
+        display: flex !important;
+        max-height: 80vh !important;
+    }
+
+    .navbar-nav-header {
+        padding: 1rem 0.75rem 0.625rem;
+    }
+
+    .navbar-nav-title {
+        font-size: 1.125rem;
+        line-height: 1.3;
+        padding-right: 2rem;
+    }
+
+    .navbar-nav-body {
+        padding: 0.875rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom));
+        max-height: calc(80vh - 120px) !important;
+    }
+
+    .navbar-nav-close {
+        width: 1.875rem;
+        height: 1.875rem;
+        position: absolute;
+        top: 0.875rem;
+        right: 0.75rem;
+    }
+
+    .navbar-nav-close i {
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.875rem 1rem;
+        font-size: 0.9375rem;
+        min-height: 44px;
+    }
+
+    .mobile-overlay {
+        background: oklch(0% 0 0 / 0.7);
+    }
+
+    .navbar-nav.mobile-open {
+        max-height: 75vh !important;
+    }
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Improve touch interactions */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        min-width: 44px;
+        min-height: 44px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link {
+        min-height: 48px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link:active {
+        transform: scale(0.98);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}

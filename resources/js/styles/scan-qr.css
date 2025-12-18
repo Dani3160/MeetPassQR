@@ -1,0 +1,188 @@
+.scan-qr-container {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.card {
+    background: var(--card-bg, white);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 10px 25px oklch(0% 0 0 / 0.1), 0 0 0 1px var(--border-color, oklch(92% 0 0));
+    border: 1px solid var(--border-color, oklch(92% 0 0));
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary, oklch(20% 0 0));
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.subtitle {
+    color: var(--text-secondary, oklch(50% 0 0));
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-size: 1.125rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.scan-controls {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.scan-area {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.qr-reader {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px oklch(0% 0 0 / 0.15);
+    border: 4px solid var(--primary);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.3);
+    }
+
+    50% {
+        box-shadow: 0 10px 35px rgba(var(--primary-rgb), 0.5);
+    }
+}
+
+.validation-result {
+    margin-top: 2.5rem;
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.validation-result h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary, oklch(20% 0 0));
+}
+
+.validation-result p {
+    margin: 0.875rem 0;
+    line-height: 1.6;
+    font-size: 1.0625rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary, oklch(20% 0 0));
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.validation-result p .info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary, oklch(50% 0 0));
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.validation-result p .info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary, oklch(20% 0 0));
+    line-height: 1.6;
+    word-break: break-word;
+    font-family: 'Poppins', sans-serif;
+}
+
+.alert {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, oklch(90% 0.05 150) 0%, oklch(85% 0.05 150) 100%);
+    border-left-color: oklch(65% 0.15 150);
+    color: oklch(30% 0.1 150);
+}
+
+.alert-error {
+    background: linear-gradient(135deg, oklch(95% 0.05 25) 0%, oklch(90% 0.05 25) 100%);
+    border-left-color: oklch(60% 0.2 25);
+    color: oklch(35% 0.15 25);
+}
+
+.warning {
+    color: oklch(40% 0.1 85);
+    font-weight: 600;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, oklch(95% 0.05 85) 0%, oklch(90% 0.05 85) 100%);
+    border-radius: 0.5rem;
+    display: inline-block;
+    border-left: 3px solid oklch(75% 0.15 85);
+}
+
+.success {
+    color: oklch(30% 0.1 150);
+    font-weight: 600;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, oklch(90% 0.05 150) 0%, oklch(85% 0.05 150) 100%);
+    border-radius: 0.5rem;
+    display: inline-block;
+    border-left: 3px solid oklch(65% 0.15 150);
+}
+
+.btn {
+    margin: 0.5rem 0.375rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.scan-controls .btn,
+.scan-area .btn,
+.validation-result .btn {
+    margin-top: 1.5rem;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

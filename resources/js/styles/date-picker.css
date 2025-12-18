@@ -1,0 +1,90 @@
+.date-picker-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.date-picker-wrapper .date-input {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    background: var(--input-bg, white) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color, oklch(92% 0 0)) !important;
+}
+
+.date-picker-wrapper .date-input::placeholder {
+    color: var(--text-secondary) !important;
+}
+
+.date-picker-wrapper :deep(.flatpickr-input) {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    background: var(--input-bg, white) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color, oklch(92% 0 0)) !important;
+}
+
+.date-picker-wrapper :deep(.flatpickr-input::placeholder) {
+    color: var(--text-secondary) !important;
+}
+
+.date-picker-wrapper :deep(.flatpickr-calendar) {
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px oklch(0% 0 0 / 0.15);
+    border: 1px solid var(--border-color, oklch(92% 0 0));
+    font-family: 'Poppins', sans-serif;
+    background: var(--card-bg, white);
+    color: var(--text-primary, oklch(20% 0 0));
+}
+
+.date-picker-wrapper :deep(.flatpickr-day.selected) {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.date-picker-wrapper :deep(.flatpickr-day.selected:hover) {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.date-picker-wrapper :deep(.flatpickr-day.today) {
+    border-color: var(--primary);
+}
+
+.date-picker-wrapper :deep(.flatpickr-day.today:hover) {
+    background: var(--table-row-hover, oklch(95% 0.05 47.604));
+}
+
+.date-picker-wrapper :deep(.flatpickr-day:hover) {
+    background: var(--table-row-hover, oklch(95% 0.05 47.604));
+}
+
+.date-picker-wrapper :deep(.flatpickr-day) {
+    color: var(--text-primary, oklch(20% 0 0));
+}
+
+.date-picker-wrapper :deep(.flatpickr-months .flatpickr-month) {
+    background: var(--primary);
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.date-picker-wrapper :deep(.flatpickr-prev-month),
+.date-picker-wrapper :deep(.flatpickr-next-month) {
+    color: white;
+    fill: white;
+}
+
+.date-picker-wrapper :deep(.flatpickr-prev-month:hover),
+.date-picker-wrapper :deep(.flatpickr-next-month:hover) {
+    background: var(--primary-dark);
+}
+
+.date-picker-wrapper :deep(.flatpickr-current-month .flatpickr-monthDropdown-months) {
+    color: white;
+    background: transparent;
+}
+
+.date-picker-wrapper :deep(.flatpickr-current-month .flatpickr-monthDropdown-months option) {
+    background: var(--card-bg, white);
+    color: var(--text-primary, oklch(20% 0 0));
+}
